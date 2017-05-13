@@ -1,6 +1,32 @@
-#include "NoteButton.h"
-#include<Wire.h>
+/*
+ * MPU6050 to Arduino Compementary Angle Finder
+ * 
+ * This sketch calculates the angle of an MPU6050 relative to the ground using a complementary filter.
+ * It is designed to be easy to understand and easy to use. 
+ * 
+ * The following are your pin connections for a GY-521 breakout board to Arduino UNO or NANO:
+ * MPU6050  UNO/NANO
+ * VCC      +5v
+ * GND      GND (duh)
+ * SCL      A5
+ * SDA      A4
+ * 
+ * Of note: this sketch uses the "I2C Protocol," which allows the Arduino to access multiple pieces of data
+ * on the MPU6050 with only two pins.  Way cooler than needing 7 pins for the 7 pieces of data you can get
+ * from your MPU6050.  The two wires are a data wire and a clock wire. The "Wire.h" library does most of this 
+ * communication between the Arduino and the MPU6050. It requires that the Arduino use the A5 adn A4 pins.
+ * Other Arduinos (Arduini?) may use different pins for the I2C protocol, so look it up on the Arduino.cc website. 
+ * The I2C protocol works this way like a conversation between the Arduino and the MPU.  It goes something like this:
+ * Arduino: "Hey 0x68." (0x68 is the MPU's address)
+ * MPU6050: "wat"
+ * Arduino: "Gimme yer x acceleration data." (except Arduino is a computer, so it calls that data "0x3B"
+ * MPU6050: "Ugh fine. 16980"
+ * Arduino: "K stop now"
+ * MPU6050: "K"
+ * 
+ */
 
+#include<Wire.h>
 const int MPU_addr=0x68;
 double AcX,AcY,AcZ,Tmp,GyX,GyY,GyZ; //These will be the raw data from the MPU6050.
 uint32_t timer; //it's a timer, saved as a big-ass unsigned int.  We use it to save times from the "micros()" command and subtract the present time in microseconds from the time stored in timer to calculate the time for each loop.
@@ -10,47 +36,7 @@ double compAngleX, compAngleY; //These are the angles in the complementary filte
 int result;
 float val;
 
-int velocity = 127;
-
-
-int noteA = 60;
-int noteB = 64;
-int noteC = 67;
-int noteD = 72;
-
-int inputA = 4;
-int inputB = 5;
-int inputC = 6;
-int inputD = 7;
-
-int inputE = 8;
-int inputF = 9;
-int inputG = 10;
-int inputH = 11;
-
-int potRead = 0;
-int potState = 0;
-int potInput = A0;
-
-NoteButton buttonA (inputA);
-NoteButton buttonB (inputB);
-NoteButton buttonC (inputC);
-NoteButton buttonD (inputD);
-
 void setup() {
-  // put your setup code here, to run once:
-
-  Serial.begin(9600);
-
-  pinMode(inputA, INPUT);
-  pinMode(inputB, INPUT);
-  pinMode(inputC, INPUT);
-  pinMode(inputD, INPUT);
-  pinMode(inputE, INPUT);
-  pinMode(inputF, INPUT);
-  pinMode(inputG, INPUT);
-  pinMode(inputH, INPUT);
-
   // Set up MPU 6050:
   Wire.begin();
   #if ARDUINO >= 157
@@ -64,6 +50,7 @@ void setup() {
   Wire.write(0x6B);  // PWR_MGMT_1 register
   Wire.write(0);     // set to zero (wakes up the MPU-6050)
   Wire.endTransmission(true);
+  Serial.begin(9600);
   delay(100);
 
   //setup starting angle
@@ -92,55 +79,10 @@ void setup() {
 
   //start a timer
   timer = micros();
-
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
-
-  if (digitalRead(inputE) == HIGH) {
-    noteA = 60;
-    noteB = 64;
-    noteC = 67;
-    noteD = 72; 
-  }
-  else if (digitalRead(inputF) == HIGH) {
-    noteA = 67;
-    noteB = 71;
-    noteC = 74;
-    noteD = 79; 
-  }
-  else if (digitalRead(inputG) == HIGH) {
-    noteA = 69;
-    noteB = 72;
-    noteC = 76;
-    noteD = 81; 
-  }
-  else if (digitalRead(inputH) == HIGH) {
-    noteA = 65;
-    noteB = 69;
-    noteC = 72;
-    noteD = 77; 
-  }
-  else {
-    buttonA.lastNoteOff(velocity);
-    buttonB.lastNoteOff(velocity);
-    buttonC.lastNoteOff(velocity);
-    buttonD.lastNoteOff(velocity);
-    noteA = 0;
-    noteB = 0;
-    noteC = 0;
-    noteD = 0; 
-  }
-  
-  buttonA.processButton(noteA, velocity);
-  buttonB.processButton(noteB, velocity);
-  buttonC.processButton(noteC, velocity);
-  buttonD.processButton(noteD, velocity);
-  
-  delay(10);
-
-  //Now begins the main loop. 
+//Now begins the main loop. 
   //Collect raw data from the sensor.
   Wire.beginTransmission(MPU_addr);
   Wire.write(0x3B);  // starting with register 0x3B (ACCEL_XOUT_H)
@@ -178,13 +120,16 @@ void loop() {
 
   val = (127. / 360.) * compAngleY + 63.5;
   result = val;
-  sendMidi(176, 95, result);
+  MIDIMessage(176, 1, result);
+  
+  //W00T print dat shit out, yo!
+  //Serial.print(compAngleX);Serial.print("\t");
+  //Serial.print(compAngleY);Serial.print("\n");
 
 }
 
-void sendMidi(byte command, byte data1, byte data2) //pass values out through standard Midi Command
-{ 
-   Serial.write(command);
-   Serial.write(data1);
-   Serial.write(data2);
+void MIDIMessage(byte channel, byte pitch, byte data) {
+  Serial.write(channel);
+  Serial.write(pitch);
+  Serial.write(data);
 }

@@ -12,6 +12,7 @@ class NoteButton {
   public:
     NoteButton(int inputPin);
     void processButton(int note, int velocity);
+    void lastNoteOff(byte velocity);
 
    private:
     void _sendNoteOn(byte note, byte velocity);
@@ -20,6 +21,7 @@ class NoteButton {
    
     int _inputPin;
     int _state;
+    int _lastNote;
 };
 
 NoteButton::NoteButton(int inputPin) {
@@ -33,19 +35,28 @@ void NoteButton::processButton(int note, int velocity) {
   if (_state == LOW && digitalRead(_inputPin) == HIGH) {
     _state = HIGH;
     _sendNoteOn(note, velocity);
+    if (note != 0)
+    _lastNote = note;
   }
 
   if (_state == HIGH && digitalRead(_inputPin) == LOW) {
     _state = LOW;
-    _sendNoteOff(note, velocity);
+    _sendNoteOff(_lastNote, velocity);
   }
 }
 
+void NoteButton::lastNoteOff(byte velocity) {
+  _sendNoteOff(_lastNote, velocity);
+  _lastNote = 0;
+}
+
 void NoteButton::_sendNoteOn(byte note, byte velocity) {
+  if (note != 0)
   _sendMidi(144, note, velocity);
 }
 
 void NoteButton::_sendNoteOff(byte note, byte velocity) {
+  if (note != 0)
   _sendMidi(128, note, velocity);
 }
 

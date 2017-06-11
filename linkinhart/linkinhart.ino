@@ -18,6 +18,12 @@ int noteB = 64;
 int noteC = 67;
 int noteD = 72;
 
+// Drums
+//int noteA = 36;
+//int noteB = 42;
+//int noteC = 40;
+//int noteD = 39;  
+
 int inputA = 5;
 int inputB = 6;
 int inputC = 7;

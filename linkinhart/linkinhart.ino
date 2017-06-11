@@ -18,10 +18,10 @@ int noteB = 64;
 int noteC = 67;
 int noteD = 72;
 
-int inputA = 4;
-int inputB = 5;
-int inputC = 6;
-int inputD = 7;
+int inputA = 5;
+int inputB = 6;
+int inputC = 7;
+int inputD = 8;
 
 int inputE = 8;
 int inputF = 9;
@@ -46,10 +46,10 @@ void setup() {
   pinMode(inputB, INPUT);
   pinMode(inputC, INPUT);
   pinMode(inputD, INPUT);
-  pinMode(inputE, INPUT);
-  pinMode(inputF, INPUT);
-  pinMode(inputG, INPUT);
-  pinMode(inputH, INPUT);
+//  pinMode(inputE, INPUT);
+//  pinMode(inputF, INPUT);
+//  pinMode(inputG, INPUT);
+//  pinMode(inputH, INPUT);
 
   // Set up MPU 6050:
   Wire.begin();
@@ -98,40 +98,40 @@ void setup() {
 void loop() {
   // put your main code here, to run repeatedly:
 
-  if (digitalRead(inputE) == HIGH) {
+  //if (digitalRead(inputE) == HIGH) {
     noteA = 60;
     noteB = 64;
     noteC = 67;
     noteD = 72; 
-  }
-  else if (digitalRead(inputF) == HIGH) {
-    noteA = 67;
-    noteB = 71;
-    noteC = 74;
-    noteD = 79; 
-  }
-  else if (digitalRead(inputG) == HIGH) {
-    noteA = 69;
-    noteB = 72;
-    noteC = 76;
-    noteD = 81; 
-  }
-  else if (digitalRead(inputH) == HIGH) {
-    noteA = 65;
-    noteB = 69;
-    noteC = 72;
-    noteD = 77; 
-  }
-  else {
-    buttonA.lastNoteOff(velocity);
-    buttonB.lastNoteOff(velocity);
-    buttonC.lastNoteOff(velocity);
-    buttonD.lastNoteOff(velocity);
-    noteA = 0;
-    noteB = 0;
-    noteC = 0;
-    noteD = 0; 
-  }
+  //}
+//  else if (digitalRead(inputF) == HIGH) {
+//    noteA = 67;
+//    noteB = 71;
+//    noteC = 74;
+//    noteD = 79; 
+//  }
+//  else if (digitalRead(inputG) == HIGH) {
+//    noteA = 69;
+//    noteB = 72;
+//    noteC = 76;
+//    noteD = 81; 
+//  }
+//  else if (digitalRead(inputH) == HIGH) {
+//    noteA = 65;
+//    noteB = 69;
+//    noteC = 72;
+//    noteD = 77; 
+//  }
+//  else {
+//    buttonA.lastNoteOff(velocity);
+//    buttonB.lastNoteOff(velocity);
+//    buttonC.lastNoteOff(velocity);
+//    buttonD.lastNoteOff(velocity);
+//    noteA = 0;
+//    noteB = 0;
+//    noteC = 0;
+//    noteD = 0; 
+//  }
   
   buttonA.processButton(noteA, velocity);
   buttonB.processButton(noteB, velocity);

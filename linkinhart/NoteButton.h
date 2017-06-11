@@ -32,17 +32,18 @@ NoteButton::NoteButton(int inputPin) {
 
 void NoteButton::processButton(int note, int velocity) {
 
-  if (_state == LOW && digitalRead(_inputPin) == HIGH) {
-    _state = HIGH;
+  if (_state == HIGH && digitalRead(_inputPin) == LOW) {
+    _state = LOW;
     _sendNoteOn(note, velocity);
     if (note != 0)
     _lastNote = note;
   }
 
-  if (_state == HIGH && digitalRead(_inputPin) == LOW) {
-    _state = LOW;
+  if (_state == LOW && digitalRead(_inputPin) == HIGH) {
+    _state = HIGH;
     _sendNoteOff(_lastNote, velocity);
   }
+
 }
 
 void NoteButton::lastNoteOff(byte velocity) {
@@ -68,4 +69,5 @@ void NoteButton::_sendMidi(byte command, byte data1, byte data2) //pass values o
 }
 
 #endif
+
 

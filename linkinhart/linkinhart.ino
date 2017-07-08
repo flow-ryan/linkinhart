@@ -104,26 +104,26 @@ void setup() {
 void loop() {
   // put your main code here, to run repeatedly:
 
-  if (digitalRead(inputE) == HIGH) {
+  if (digitalRead(inputE) == LOW) {
     noteA = 67;
     noteB = 71;
     noteC = 74;
     noteD = 79;
      
   }
-  else if (digitalRead(inputF) == HIGH) {
+  else if (digitalRead(inputF) == LOW) {
     noteA = 69;
     noteB = 72;
     noteC = 76;
     noteD = 81; 
   }
-  else if (digitalRead(inputG) == HIGH) {
+  else if (digitalRead(inputG) == LOW) {
     noteA = 65;
     noteB = 69;
     noteC = 72;
     noteD = 77;
   }
-  else if (digitalRead(inputH) == HIGH) {
+  else if (digitalRead(inputH) == LOW) {
     noteA = 62;
     noteB = 65;
     noteC = 69;

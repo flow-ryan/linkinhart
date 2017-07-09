@@ -1,6 +1,3 @@
-# linkinhart
-Sketching with Hardware Project from the CDTM
-
 # Glove MIDI controller
 
 Use a glove as a MIDI controller to make music with nothing but the power of your gloved hands.

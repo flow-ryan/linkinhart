@@ -9,35 +9,35 @@ int f_dur[] = {65, 69, 72, 77};
 int d_moll[] = {62, 65, 69, 74};
 int drums[] = {36, 42, 40, 39};
 
-int *chord;
+int *chord; 
+int root_note, third_note, fifth_note, root_note_high;
 
-// four notes of one triad
-int root_note;
-int third_note;
-int fifth_note;
-int root_note_high;
+// play all notes at constant velocity
+int velocity = 127;
 
+// four inputs for playing the Notes
 int inputA = 5;
 int inputB = 6;
 int inputC = 7;
 int inputD = 8;
-
-int inputE = 9;
-int inputF = 10;
-int inputG = 11;
-int inputH = 12;
-
 NoteButton buttonA (inputA);
 NoteButton buttonB (inputB);
 NoteButton buttonC (inputC);
 NoteButton buttonD (inputD);
 
+// four inputs for selecting the chords
+int inputE = 9;
+int inputF = 10;
+int inputG = 11;
+int inputH = 12;
+
+// define the MPU object
 const int MPU_addr=0x68;
 MPU mpu_object (MPU_addr);
 
-double compAngleY;
-int result;
-int velocity = 127;
+// calculating variables
+double comp_angle_y;
+int filter_val;
 
 void setup() {
   // put your setup code here, to run once:
@@ -59,7 +59,7 @@ void setup() {
 
 void loop() {
 
-  // set the chord via the inputs E-H
+  // Select the chord
   if (digitalRead(inputE) == LOW)
     chord = g_dur;
   else if (digitalRead(inputF) == LOW)
@@ -75,19 +75,23 @@ void loop() {
   third_note = chord[1];
   fifth_note = chord[2];
   root_note_high = chord[3];
-  
+
+  // play the notes
   buttonA.processButton(root_note, velocity);
   buttonB.processButton(third_note, velocity);
   buttonC.processButton(fifth_note, velocity);
   buttonD.processButton(root_note_high, velocity);
-  
-  delay(10);
 
+  // process all MPU data
   mpu_object.process();
-  compAngleY = mpu_object.get_comp_angle_y();
+  // get the Y angle
+  comp_angle_y = mpu_object.get_comp_angle_y();
 
-  result = (127. / 360.) * compAngleY + 63.5;
-  sendMidi(176, 95, result);
+  // send filter value via midi
+  filter_val = (127. / 360.) * comp_angle_y + 63.5;
+  sendMidi(176, 95, filter_val);
+
+  delay(10);
 
 }
 
@@ -97,3 +101,4 @@ void sendMidi(byte command, byte data1, byte data2) //pass values out through st
    Serial.write(data1);
    Serial.write(data2);
 }
+

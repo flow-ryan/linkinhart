@@ -85,8 +85,8 @@ void loop() {
 
   filter_count++;
 
-  // the filter only gets updated every 10 iterations to not overload the connection
-  if filter_count == 5 {
+  // the filter only gets updated every 5 iterations to not overload the connection
+  if (filter_count == 5) {
     // process all MPU data
     mpu_object.process();
     // get the Y angle
@@ -97,6 +97,7 @@ void loop() {
     filter_count = 0;
   }
 
+  // 50 hz update freq
   delay(20);
 
 }

@@ -39,7 +39,7 @@ The following schematic shows the base wiring of the arduino uno, the MPU and th
 
 ![project_schematic](https://github.com/flow-ryan/linkinhart/blob/marcel/project_schematic.png)
 
-In the project four red VCC wires as well as one one black groud wire are connected to one glove and the other four VCC red wires, one black ground wire, one SCL wire, one SDA wire and one blue VCC wire are connected to the other glove. Due to stability reasons, the connecting wires of each glove are combined in one LAN cable. Also one prototype universal PCB circuit boards is used for each glove as a middle component to provide a robust connection of the resistors with their corresponding wires.
+In the project, four red VCC wires as well as one one black groud wire are connected to one glove and the other four VCC red wires, one black ground wire, one SCL wire, one SDA wire and one blue VCC wire are connected to the other glove. Due to stability reasons, the connecting wires of each glove are combined in one LAN cable. Also, one prototype universal PCB circuit board is used for each glove as a middle component to provide a robust connection of the resistors with their corresponding wires.
 
 ## File structure
 
@@ -65,18 +65,14 @@ The following picture shows two copper tapes touching on one glove.
 
 ![Glove showing copper plate touch](https://github.com/flow-ryan/linkinhart/blob/marcel/glove_copper_plate_touch.JPG)
 
-
 ## Disclaimer
 
-* The examples are not extensively tested and only meant as simple explanations and for inspiration.
 * NO WARRANTY of ANY KIND is provided.
 * There are probably several things that can be improved or added.
-
 
 ## License
 
 This project is licensed under the Apache License 2.0 License - see the [LICENSE.md](LICENSE.md) file for details
-
 
 ## Acknowledgements
 
@@ -87,4 +83,4 @@ The following sources have been used while creating this project:
 * http://42bots.com/tutorials/arduino-uno-and-the-invensense-mpu-6050-6dof-imu/
 * http://www.pitt.edu/~mpd41/Angle.ino
 
-The project was part of the course "Sketching with Hardware" from the Center for Digitnal Technology and Management (CDTM)
+The project was part of the course "Sketching with Hardware" at the Center for Digitnal Technology and Management (CDTM)

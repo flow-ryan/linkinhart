@@ -41,13 +41,15 @@ Software:
 
 # Schematic
 
-![project_schematic](http://url/to/schematic.png)
+![project_schematic](https://github.com/flow-ryan/linkinhart/blob/marcel/project_schematic.png)
 
 # Project Pictures
 
-![Glove with copper tapes and MPU](http://url/to/schematic.png)
+![Glove with copper tapes and MPU wiring](https://github.com/flow-ryan/linkinhart/blob/marcel/glove_mpu_wiring.JPG)
 
-![Arduino UNO](http://url/to/schematic.png)
+![Arduino UNO](https://github.com/flow-ryan/linkinhart/blob/marcel/arduino.JPG)
+
+![Glove showing copper plate touch](https://github.com/flow-ryan/linkinhart/blob/marcel/glove_copper_plate_touch.JPG)
 
 # Sources
 

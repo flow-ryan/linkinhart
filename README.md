@@ -6,7 +6,7 @@ Sketching with Hardware Project from the CDTM
 Use a glove as a MIDI controller to make music with nothing but the power of your gloved hands.
 Two copper tapes at each of the glove finger tips can be used to close a circuit by establising contact between the two upon which a voltage signal is sent to an arduino board. Additionally a gyroscope is mounted on top of the glove to capture pitch and role movements of the whole hand. Both types of inputs are sent via a LAN cable to a computer as a MIDI signal on which music can be generated depending on the signal type.
 
-### Prerequisites
+## Prerequisites
 
 What things you need to install the software and how to install them
 The following hardware components are needed:
@@ -33,12 +33,12 @@ Hardware:
 * Connect Arduino to MPU and glove copper tapes (cmp. schematic)
 
 Software:
-* Upload "" file to arduino
+* Upload file "linkinhart.ino" to arduino
 * Set up Hairless MIDI according to http://projectgus.github.io/hairless-midiserial/
 * Start Ableton 9 (alternative DAW)
 * Audio Media Setup
 
-# Schematic
+## Schematic
 
 The following schematic shows the base wiring of the arduino uno, the MPU and the respective resistors.
 
@@ -46,7 +46,15 @@ The following schematic shows the base wiring of the arduino uno, the MPU and th
 
 In the final project, four red VCC wires as well as one one black groud wire are connected to one glove and the other four VCC red wires, one black ground wire, one SCL wire, one SDA wire and one blue VCC wire are connected to the other glove. Due to stability reasons, the connecting wires of each glove are combined in one LAN cable. Also one prototype universal PCB circuit boards is used for each glove as a middle component to provide a robust connection of the resistors with their corresponding wires.
 
-# Project Pictures
+## File structure
+
+All files needed for execution are located in the folder "linkinhart". The file "linkinhart.ino" implements the main functionality and needs to be uploaded to the arduino. The header files "MPU.h" and "NoteButton.h" provide class definition and corresponding functions for MPU and copper tape communication respectively.
+
+## Project Demo
+
+
+
+## Project Pictures
 
 The following picture shows the Arduino UNO with its respective wiring according to the above schematic:
 
@@ -61,7 +69,7 @@ The following picture shows two copper tapes touching on one glove.
 ![Glove showing copper plate touch](https://github.com/flow-ryan/linkinhart/blob/marcel/glove_copper_plate_touch.JPG)
 
 
-# Disclaimer
+## Disclaimer
 
 * The examples are not extensively tested and only meant as simple explanations and for inspiration.
 * NO WARRANTY of ANY KIND is provided.
@@ -73,7 +81,7 @@ The following picture shows two copper tapes touching on one glove.
 This project is licensed under the Apache License 2.0 License - see the [LICENSE.md](LICENSE.md) file for details
 
 
-# Acknowledgements
+## Acknowledgements
 
 The following sources have been used while creating this project:
 * http://www.instructables.com/id/Easy-3-Pot-Potentiometer-Arduino-Uno-Effects-Midi-/
@@ -83,80 +91,3 @@ The following sources have been used while creating this project:
 * http://www.pitt.edu/~mpd41/Angle.ino
 
 The project was part of the course "Sketching with Hardware" from the Center for Digitnal Technology and Management (CTDM)
-
-
-```
-Give examples
-```
-
-### Installing
-
-A step by step series of examples that tell you have to get a development env running
-
-Say what the step will be
-
-```
-Give the example
-```
-
-And repeat
-
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
-
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-## Deployment
-
-Add additional notes about how to deploy this on a live system
-
-## Built With
-
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
-
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
-
-## Authors
-
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-## Acknowledgments
-
-* Hat tip to anyone who's code was used
-* Inspiration
-* etc

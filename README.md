@@ -16,9 +16,9 @@ The following hardware components are needed:
 * MPU6050
 * 3 LAN cable
 * 2 gloves
-* Prototype Universal PCB Circuit Board
+* 2 Prototype Universal PCB Circuit Board
 * 10 copper tape
-* Bunch of Arduino wires
+* ~ 30 Arduino wires
 
 The following software is needed:
 
@@ -31,7 +31,6 @@ The following software is needed:
 Hardware:
 * Connect Computer to Arduino UNO via LAN cable
 * Connect Arduino to MPU and glove copper tapes (cmp. schematic)
-* 
 
 Software:
 * Upload "" file to arduino
@@ -41,24 +40,25 @@ Software:
 
 # Schematic
 
+The following schematic shows the base wiring of the arduino uno, the MPU and the respective resistors.
+
 ![project_schematic](https://github.com/flow-ryan/linkinhart/blob/marcel/project_schematic.png)
+
+In the final project, four red VCC wires as well as one one black groud wire are connected to one glove and the other four VCC red wires, one black ground wire, one SCL wire, one SDA wire and one blue VCC wire are connected to the other glove. Due to stability reasons, the connecting wires of each glove are combined in one LAN cable. Also one prototype universal PCB circuit boards is used for each glove as a middle component to provide a robust connection of the resistors with their corresponding wires.
 
 # Project Pictures
 
-![Glove with copper tapes and MPU wiring](https://github.com/flow-ryan/linkinhart/blob/marcel/glove_mpu_wiring.JPG)
+The following picture shows the Arduino UNO with its respective wiring according to the above schematic:
 
 ![Arduino UNO](https://github.com/flow-ryan/linkinhart/blob/marcel/arduino.JPG)
 
+The following picture shows the glove with both the copper tapes and the MPU installed as well as their corresponding wiring.
+
+![Glove with copper tapes and MPU wiring](https://github.com/flow-ryan/linkinhart/blob/marcel/glove_mpu_wiring.JPG)
+
+The following picture shows two copper tapes touching on one glove.
+
 ![Glove showing copper plate touch](https://github.com/flow-ryan/linkinhart/blob/marcel/glove_copper_plate_touch.JPG)
-
-# Sources
-
-The following sources have been used while creating this project:
-* http://www.instructables.com/id/Easy-3-Pot-Potentiometer-Arduino-Uno-Effects-Midi-/
-* https://learn.adafruit.com/midi-drum-glove/
-* http://www.giuseppecaccavale.it/arduino/mpu-6050-gy-521-arduino-tutorial/
-* http://42bots.com/tutorials/arduino-uno-and-the-invensense-mpu-6050-6dof-imu/
-* 
 
 
 # Disclaimer
@@ -80,6 +80,9 @@ The following sources have been used while creating this project:
 * https://learn.adafruit.com/midi-drum-glove/
 * http://www.giuseppecaccavale.it/arduino/mpu-6050-gy-521-arduino-tutorial/
 * http://42bots.com/tutorials/arduino-uno-and-the-invensense-mpu-6050-6dof-imu/
+* http://www.pitt.edu/~mpd41/Angle.ino
+
+The project was part of the course "Sketching with Hardware" from the Center for Digitnal Technology and Management (CTDM)
 
 
 ```

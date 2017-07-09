@@ -8,9 +8,9 @@ Two copper tapes at each of the glove finger tips can be used to close a circuit
 What things you need to install the software and how to install them
 The following hardware components are needed:
 
-* Arduino UNO 
+* 1 Arduino UNO 
 * 8 10K ohm resistors
-* MPU6050
+* 1 MPU6050
 * 3 LAN cable
 * 2 gloves
 * 2 Prototype Universal PCB Circuit Board
@@ -40,7 +40,7 @@ The following schematic shows the base wiring of the arduino uno, the MPU and th
 
 ![project_schematic](https://github.com/flow-ryan/linkinhart/blob/marcel/project_schematic.png)
 
-In the final project, four red VCC wires as well as one one black groud wire are connected to one glove and the other four VCC red wires, one black ground wire, one SCL wire, one SDA wire and one blue VCC wire are connected to the other glove. Due to stability reasons, the connecting wires of each glove are combined in one LAN cable. Also one prototype universal PCB circuit boards is used for each glove as a middle component to provide a robust connection of the resistors with their corresponding wires.
+In the project four red VCC wires as well as one one black groud wire are connected to one glove and the other four VCC red wires, one black ground wire, one SCL wire, one SDA wire and one blue VCC wire are connected to the other glove. Due to stability reasons, the connecting wires of each glove are combined in one LAN cable. Also one prototype universal PCB circuit boards is used for each glove as a middle component to provide a robust connection of the resistors with their corresponding wires.
 
 ## File structure
 

@@ -1,7 +1,7 @@
 # Glove MIDI controller
 
 Use a glove as a MIDI controller to make music with nothing but the power of your gloved hands.
-Two copper tapes at each of the glove finger tips can be used to close a circuit by establising contact between the two upon which a voltage signal is sent to an arduino board. Additionally a gyroscope is mounted on top of the glove to capture pitch and role movements of the whole hand. Both types of inputs are sent via a LAN cable to a computer as a MIDI signal on which music can be generated depending on the signal type.
+Two copper tapes at each of the glove finger tips can be used to close a circuit by establising contact between the two upon which a voltage signal is sent to an arduino board. Additionally a gyroscope is mounted on top of the glove to capture pitch and role movements of the whole hand. Both types of inputs are sent via a LAN cable as a MIDI signal to a computer on which music can be generated from the signal.
 
 ## Prerequisites
 

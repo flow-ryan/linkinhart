@@ -5,7 +5,6 @@ Two copper tapes at each of the glove finger tips can be used to close a circuit
 
 ## Prerequisites
 
-What things you need to install the software and how to install them
 The following hardware components are needed:
 
 * 1 Arduino UNO 

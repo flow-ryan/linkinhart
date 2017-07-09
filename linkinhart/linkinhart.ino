@@ -95,8 +95,7 @@ void loop() {
 
 }
 
-void sendMidi(byte command, byte data1, byte data2) //pass values out through standard Midi Command
-{ 
+void sendMidi(byte command, byte data1, byte data2) {
    Serial.write(command);
    Serial.write(data1);
    Serial.write(data2);

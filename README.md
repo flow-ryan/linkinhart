@@ -32,8 +32,7 @@ Hardware:
 Software:
 * Upload file "linkinhart.ino" to arduino
 * Set up Hairless MIDI according to http://projectgus.github.io/hairless-midiserial/
-* Start Ableton 9 (alternative DAW)
-* Audio Media Setup
+* Start Ableton 9 (or any other DAW)
 
 ## Schematic
 

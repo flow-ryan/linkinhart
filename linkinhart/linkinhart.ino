@@ -1,7 +1,7 @@
 #include "NoteButton.h"
 #include "MPU.h"
 
-// define the chords
+// define the chords as a set of 4 notes (root, third, fifth, root_high)
 int c_dur[] = {60, 64, 67, 72};
 int g_dur[] = {67, 71, 74, 79};
 int a_moll[] = {69, 72, 76, 81};
@@ -9,7 +9,7 @@ int f_dur[] = {65, 69, 72, 77};
 int d_moll[] = {62, 65, 69, 74};
 int drums[] = {36, 42, 40, 39};
 
-int *tonart = c_dur;
+int *chord;
 
 // four notes of one triad
 int root_note;
@@ -61,20 +61,20 @@ void loop() {
 
   // set the chord via the inputs E-H
   if (digitalRead(inputE) == LOW)
-    tonart = g_dur;
+    chord = g_dur;
   else if (digitalRead(inputF) == LOW)
-    tonart = a_moll;
+    chord = a_moll;
   else if (digitalRead(inputG) == LOW)
-    tonart = f_dur;
+    chord = f_dur;
   else if (digitalRead(inputH) == LOW)
-    tonart = d_moll;
+    chord = d_moll;
   else
-    tonart = c_dur;
+    chord = c_dur;
 
-  root_note = tonart[0];
-  third_note = tonart[1];
-  fifth_note = tonart[2];
-  root_note_high = tonart[3];
+  root_note = chord[0];
+  third_note = chord[1];
+  fifth_note = chord[2];
+  root_note_high = chord[3];
   
   buttonA.processButton(root_note, velocity);
   buttonB.processButton(third_note, velocity);

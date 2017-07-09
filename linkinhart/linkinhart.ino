@@ -38,6 +38,7 @@ MPU mpu_object (MPU_addr);
 // calculating variables
 double comp_angle_y;
 int filter_val;
+int filter_count = 0;
 
 void setup() {
   // put your setup code here, to run once:
@@ -82,16 +83,21 @@ void loop() {
   buttonC.processButton(fifth_note, velocity);
   buttonD.processButton(root_note_high, velocity);
 
-  // process all MPU data
-  mpu_object.process();
-  // get the Y angle
-  comp_angle_y = mpu_object.get_comp_angle_y();
+  filter_count++;
 
-  // send filter value via midi
-  filter_val = (127. / 360.) * comp_angle_y + 63.5;
-  sendMidi(176, 95, filter_val);
+  // the filter only gets updated every 10 iterations to not overload the connection
+  if filter_count == 5 {
+    // process all MPU data
+    mpu_object.process();
+    // get the Y angle
+    comp_angle_y = mpu_object.get_comp_angle_y();
+    // send filter value via midi
+    filter_val = (127. / 360.) * comp_angle_y + 63.5;
+    sendMidi(176, 95, filter_val);
+    filter_count = 0;
+  }
 
-  delay(10);
+  delay(20);
 
 }
 

@@ -48,7 +48,9 @@ All files needed for execution are located in the folder "linkinhart". The file 
 
 ## Project Demo
 
+The following video shows a short product demo playing different chords and using the auto filter function.
 
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/eSu27cThHNg/0.jpg)](https://www.youtube.com/watch?v=eSu27cThHNg)
 
 ## Project Pictures
 
@@ -86,4 +88,4 @@ The following sources have been used while creating this project:
 * http://42bots.com/tutorials/arduino-uno-and-the-invensense-mpu-6050-6dof-imu/
 * http://www.pitt.edu/~mpd41/Angle.ino
 
-The project was part of the course "Sketching with Hardware" from the Center for Digitnal Technology and Management (CTDM)
+The project was part of the course "Sketching with Hardware" from the Center for Digitnal Technology and Management (CDTM)

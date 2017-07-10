@@ -86,13 +86,14 @@ void loop() {
   filter_count++;
 
   // the filter only gets updated every 5 iterations to not overload the connection
+  // process all MPU data
+  mpu_object.process();
+  // get the Y angle
+  comp_angle_y = mpu_object.get_comp_angle_y();
+  // send filter value via midi
+  filter_val = (127. / 360.) * comp_angle_y + 63.5;
+  
   if (filter_count == 5) {
-    // process all MPU data
-    mpu_object.process();
-    // get the Y angle
-    comp_angle_y = mpu_object.get_comp_angle_y();
-    // send filter value via midi
-    filter_val = (127. / 360.) * comp_angle_y + 63.5;
     sendMidi(176, 95, filter_val);
     filter_count = 0;
   }
